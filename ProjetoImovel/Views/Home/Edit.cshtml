@@ -1,0 +1,76 @@
+﻿@model ProjetoImovel.Models.Imovel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@using (Html.BeginForm("Edit", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "ajax_form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <div style="font-size:small">Tipo Imóvel</div>
+            @Html.EditorFor(model => model.TipoImovel, new { htmlAttributes = new { @class = "form-control", @id = "Codigo", @required = "required" } })
+        </div>
+        <div class="col-md-4">
+            <div style="font-size:small">Valor Venda R$</div>
+            @Html.EditorFor(model => model.ValorVenda, new { htmlAttributes = new { @class = "form-control", @id = "Descricao", @required = "required" } })
+        </div>
+        <div class="col-md-4">
+            <div style="font-size:small">Valor Locação R$</div>
+            @Html.EditorFor(model => model.ValorLocacao, new { htmlAttributes = new { @class = "form-control mascaraValor", @id = "ValorUN", @required = "required" } })
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-md-4">
+            <div style="font-size:small">Endereço</div>
+            @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control", @id = "Marca", @required = "required" } })
+        </div>
+        <div class="col-md-4">
+            <div style="font-size:small">Número</div>
+            @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control mascaraValor", @id = "ValorUN", @required = "required" } })
+        </div>
+        <div class="col-md-4">
+            <div style="font-size:small">Complemento</div>
+            @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control mascaraValor", @id = "ValorUN", @required = "required" } })
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-md-3">
+            <div style="font-size:small">Bairro</div>
+            @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control", @id = "Marca", @required = "required" } })
+        </div>
+        <div class="col-md-3">
+            <div style="font-size:small">Cidade</div>
+            @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control mascaraValor", @id = "ValorUN", @required = "required" } })
+        </div>
+        <div class="col-md-3">
+            <div style="font-size:small">Estado</div>
+            @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control mascaraValor", @id = "ValorUN", @required = "required" } })
+        </div>
+        <div class="col-md-3">
+            <div style="font-size:small">Cep</div>
+            @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control mascaraValor", @id = "ValorUN", @required = "required" } })
+        </div>
+    </div>
+    @Html.HiddenFor(model => model.Id)
+    <br />
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <button type="button" class="btn btn-secondary" onclick="back()" id="btnVoltar">Voltar</button>
+                <button type="submit" class="btn btn-primary" id="btnSubmit">Editar</button>
+            </div>
+        </div>
+    </div>
+}
+
+<script>
+    function back() {
+        location.href = '@Url.Action("Index", "Home")';
+    }
+</script>
